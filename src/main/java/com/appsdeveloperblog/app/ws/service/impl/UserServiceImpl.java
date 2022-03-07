@@ -3,7 +3,7 @@ package com.appsdeveloperblog.app.ws.service.impl;
 import com.appsdeveloperblog.app.ws.UserRepository;
 import com.appsdeveloperblog.app.ws.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.service.UserService;
-import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
+import com.appsdeveloperblog.app.ws.shared.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.shared.dto;
+package com.appsdeveloperblog.app.ws.shared;
 
 import java.io.Serial;
 import java.io.Serializable;
