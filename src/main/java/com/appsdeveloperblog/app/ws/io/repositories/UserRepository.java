@@ -1,7 +1,6 @@
-package com.appsdeveloperblog.app.ws;
+package com.appsdeveloperblog.app.ws.io.repositories;
 
-import com.appsdeveloperblog.app.ws.entity.UserEntity;
-import com.sun.xml.bind.v2.model.core.ID;
+import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

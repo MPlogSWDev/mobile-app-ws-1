@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.entity;
+package com.appsdeveloperblog.app.ws.io.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,6 +1,8 @@
 package com.appsdeveloperblog.app.ws.security;
 
+import com.appsdeveloperblog.app.ws.SpringApplicationContext;
 import com.appsdeveloperblog.app.ws.service.UserService;
+import com.appsdeveloperblog.app.ws.shared.UserDto;
 import com.appsdeveloperblog.app.ws.ui.model.request.UserLoginRequestModel;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -62,11 +64,12 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SecurityConstants.TOKEN_SECRET)
                 .compact();
-//        UserService userService = (UserService)SpringApplicationContext.getBean("userServiceImpl");
-//        UserDto userDto = userService.getUser(userName);
-//
+        UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
+        UserDto userDto = userService.getUser(userName);
+
 //        res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
         res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+        res.addHeader("UserId", userDto.getUserId());
 
     }
 
