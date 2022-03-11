@@ -1,10 +1,8 @@
 package com.appsdeveloperblog.app.ws.ui.controller;
 
-import com.appsdeveloperblog.app.ws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.service.UserService;
 import com.appsdeveloperblog.app.ws.shared.UserDto;
 import com.appsdeveloperblog.app.ws.ui.model.request.UserDetailsRequestModel;
-import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +47,21 @@ public class UserController {
         return returnValue;
     }
 
-    @PutMapping
-    public String updateUser(){
-        return "update user was called";
+
+
+    @PutMapping( path="/{id}",
+            consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public UserRest updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails){
+        UserRest returnValue = new UserRest();
+
+        UserDto userDto = new UserDto();
+        BeanUtils.copyProperties(userDetails, userDto);
+
+        UserDto updateUser = userService.updateUser(id,userDto);
+        BeanUtils.copyProperties(updateUser, returnValue);
+
+        return returnValue;
     }
 
     @DeleteMapping
